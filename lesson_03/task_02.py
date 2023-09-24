@@ -1,0 +1,5 @@
+n = str(input())
+s1 = int(n[0])
+s2 = int(n[1])
+s3 = int(n[2])
+print(s1 + s2 + s3)
