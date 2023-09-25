@@ -1,5 +1,5 @@
 sec = int(input())
 min = sec // 60
-sec2 = sec % 60
-print(f'{min}:{sec2}')
+sec_2 = sec % 60
+print(f'{min}:{sec_2}')
 
