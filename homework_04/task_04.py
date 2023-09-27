@@ -9,5 +9,5 @@ while True:
         break
     elif num > people:
         print('Не угадал, число больше загаданного...')
-    elif num < people:
+    else:
         print('Не угадал, число меньше загаданного...')
