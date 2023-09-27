@@ -1,13 +1,13 @@
 import random
 
 num = random.randint(0, 100)
-people = int(input('Введите число: '))
+
 while True:
-    people = int(input('Введите число еще раз: '))
+    people = int(input('Введите число: '))
     if num == people:
-        print('Ты молодец!!')
+        print('Ты угадал, молодец!!')
         break
     elif num > people:
-        print('Не угадал, число больше загаданного')
+        print('Не угадал, число больше загаданного...')
     elif num < people:
-        print('Не угадал, число меньше загаданного')
+        print('Не угадал, число меньше загаданного...')
