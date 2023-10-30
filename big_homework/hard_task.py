@@ -1,52 +1,32 @@
-def input_numbers_line() -> list[int]:
-    return [int(num) for num in input().split()]
+def is_magic_square(matrix):
+    n = len(matrix)
+    sum_first_row = sum(matrix[0])
+
+    ''''Список суммы строк'''
+    row_sums = [sum(row) for row in matrix]
+
+    '''Список суммы столбцов'''
+    col_sums = [sum(matrix[i][j] for i in range(n)) for j in range(n)]
+
+    '''Сумма первой диагонали'''
+    primary_diagonal_sum = sum(matrix[i][i] for i in range(n))
+
+    '''Сумма второй диагонали'''
+    secondary_diagonal_sum = sum(matrix[i][n - i - 1] for i in range(n))
+
+    return all(
+        all_sum == sum_first_row for all_sum in row_sums + col_sums + [primary_diagonal_sum, secondary_diagonal_sum])
 
 
-def input_matrix(size: int) -> list[list[int]]:
-    return [input_numbers_line() for i in range(size)]
+input_size_matrix = int(input("Enter the size of the square matrix: "))
 
+matrix_list = []
+print("Enter matrix:")
+for _ in range(input_size_matrix):
+    row = list(map(int, input().split()))
+    matrix_list.append(row)
 
-def calc_main_diag_sum(matrix: list[list[int]]) -> int:
-    return sum(matrix[i][i] for i in range(len(matrix)))
-
-
-def calc_additional_diag_sum(matrix: list[list[int]]) -> int:
-    size = len(matrix)
-    return sum(matrix[i][size - i - 1] for i in range(size))
-
-
-def calc_row_sum(matrix: list[list[int]], row_index: int) -> int:
-    return sum(matrix[row_index])
-
-
-def calc_column_sum(matrix: list[list[int]], column_index: int) -> int:
-    return sum(matrix[i][column_index] for i in range(len(matrix)))
-
-
-def check_rows(matrix: list[list[int]], magic_sum: int):
-    for i in range(len(matrix)):
-        row_sum = calc_row_sum(matrix, i)
-        if row_sum != magic_sum:
-            return False
-    return True
-
-
-def check_columns(matrix: list[list[int]], magic_sum: int):
-    return all(calc_column_sum(matrix, i) == magic_sum for i in range(len(matrix)))
-
-
-def is_magic(matrix: list[list[int]]) -> bool:
-    magic_sum = calc_main_diag_sum(matrix)
-    if magic_sum != calc_additional_diag_sum(matrix):
-        return False
-    return check_rows(matrix, magic_sum) and check_columns(matrix, magic_sum)
-
-
-def main():
-    size = int(input())
-    matrix = input_matrix(size)
-    print(is_magic(matrix))
-
-
-if __name__ == '__main__':
-    main()
+if is_magic_square(matrix_list):
+    print(True)
+else:
+    print(False)
