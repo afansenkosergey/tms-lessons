@@ -1,0 +1,20 @@
+--Находит людей из Японии в таблице.
+SELECT * FROM user WHERE country = 'Япония';
+
+--Сколько людей из Японии в таблице?
+SELECT COUNT(*) FROM user WHERE country = 'Япония';
+
+--Находит всех людей с именем Мария
+SELECT first_name, last_name FROM user WHERE first_name = 'Мария'
+
+--Находит людей старше 116 лет.
+SELECT first_name, last_name, age FROM user WHERE age > 116
+
+--Выводит людей в порядке возрастания возраста
+SELECT first_name, last_name, age FROM user ORDER BY age DESC
+
+--Выводит самого старейшего человека в таблице?
+SELECT first_name, last_name, age FROM user ORDER BY age DESC LIMIT 1
+
+--Выводит сколько людей из каждой страны в таблице?
+SELECT country, count(*) AS cnt FROM user GROUP BY country ORDER BY cnt DESC;
