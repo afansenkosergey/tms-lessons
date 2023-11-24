@@ -1,0 +1,36 @@
+--Количество людей из каждой страны
+SELECT country, COUNT(*)
+FROM user
+GROUP BY country;
+
+--Количество людей для каждого имени (группировка по first_name)
+SELECT first_name, COUNT(*)
+FROM user
+GROUP BY first_name;
+
+--Суммарное количество лет у людей из каждой страны
+SELECT country, SUM(age)
+FROM user
+GROUP BY country;
+
+--Среднее количество лет у людей из каждой страны
+SELECT country, AVG(age)
+FROM user
+GROUP BY country;
+
+--Возраст самого старшего человека из каждой страны
+SELECT country, MAX(age)
+FROM user
+GROUP BY country;
+
+--* Количество людей из каждой страны, у которой минимум 5 человек в таблице (используйте HAVING)
+SELECT country, COUNT(*) AS cou
+FROM user
+GROUP BY country
+HAVING cou >= 5;
+
+--* Найдите количество людей с одинаковыми фамилиями
+SELECT last_name, COUNT(*) AS ln
+FROM user
+GROUP BY last_name
+HAVING ln > 1;

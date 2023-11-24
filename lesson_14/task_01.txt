@@ -1,0 +1,27 @@
+-- Количество людей старше 116 лет.
+SELECT * ,COUNT(*)
+FROM user WHERE age > 116;
+
+-- Сумму возрастов
+SELECT SUM(age)
+FROM user;
+
+-- Средний возраст
+SELECT AVG(age)
+FROM user;
+
+-- Средний возраст, не используя функцию AVG
+SELECT SUM(age) / (COUNT(*) * 1.0)
+FROM user;
+
+-- Минимальный возраст
+SELECT MIN(age)
+FROM user;
+
+-- Максимальный возраст
+SELECT MAX(age)
+FROM user;
+
+-- Разницу (в годах) между самым старшим и самым младшим человеком
+SELECT MAX(age) - MIN(age) AS FLOAT
+FROM user;

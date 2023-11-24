@@ -1,0 +1,19 @@
+--Сколько столетий прожил человек (с точностью до одного знака после запятой)
+SELECT ROUND(age / 100 , 1)
+FROM user;
+
+--Длину имени (количество символов)
+SELECT LENGTH(last_name)
+FROM user;
+
+--Длину фамилии (количество символов)
+SELECT LENGTH(first_name)
+FROM user;
+
+--Длину полного имени (количество символов)
+SELECT LENGTH(first_name|| '' ||last_name)
+FROM user;
+
+--Инициалы (например "Иван Петров" -> "И. П.")
+SELECT SUBSTR(first_name, 1, 1)||'.'|| SUBSTR(last_name, 1, 1)||'.'
+FROM user;

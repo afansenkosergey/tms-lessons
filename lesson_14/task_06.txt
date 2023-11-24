@@ -1,0 +1,37 @@
+--Сделайте JOIN запрос для данных из таблиц Product и Vendor, посмотрите на результат. Какие названия столбцов получились в результате?
+SELECT *
+FROM product
+JOIN vendor ON product.vendor_id = vendor.id;
+
+--Сделайте разные типы JOIN запросов (INNER, LEFT OUTER, RIGHT OUTER, FULL OUTER). Как отличаются результаты?
+SELECT *
+FROM product
+INNER JOIN vendor ON product.vendor_id = vendor.id;
+SELECT *
+FROM product
+LEFT OUTER JOIN vendor ON product.vendor_id = vendor.id;
+SELECT *
+FROM product
+RIGHT OUTER JOIN vendor ON product.vendor_id = vendor.id;
+SELECT *
+FROM product
+FULL OUTER JOIN vendor ON product.vendor_id = vendor.id;
+
+--* Сделайте запрос, который выведет сколько продуктов у каждого вендора (Используйте JOIN и GROUP BY)
+SELECT vnd.name AS vendor_name, COUNT(pc.id) AS product_count
+FROM vendor vnd
+JOIN product pc ON vnd.id = pc.vendor_id
+GROUP BY vnd.name;
+
+--* Сделайте запрос, который выведет среднюю цену продуктов у каждого вендора.
+SELECT vnd.name AS vendor_name, AVG(pc.price) AS product_count
+FROM vendor vnd
+JOIN product pc ON vnd.id = pc.vendor_id
+GROUP BY vnd.name;
+
+--* Сделайте запрос, который выведет вендоров, у которых нет продуктов (используйте JOIN, GROUP BY, HAVING)
+SELECT vnd.name AS vendor_name
+FROM vendor vnd
+LEFT JOIN product pc ON vnd.id = pc.vendor_id
+GROUP BY vnd.name
+HAVING COUNT(pc.id) = 0;
