@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 
 app = Flask(__name__)
 
@@ -8,9 +8,10 @@ def hello_world():
     return '<p>Hello world</p>'
 
 
-@app.route('/<string:name>')
-def user_name(name: str):
-    return f'<p>Hello {name}</p>'
+@app.route('/')
+def hello_world():
+    name = request.args.get('name', 'World')
+    return f'<p>Hello, {name}!</p>'
 
 
 if __name__ == '__main__':
